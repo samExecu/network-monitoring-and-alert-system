@@ -1,0 +1,7 @@
+APScheduler==3.10.4
+Flask==3.0.3
+flask-socketio==5.3.6
+python-dotenv==1.0.1
+requests==2.32.3
+plotly==5.22.0
+eventlet==0.36.1
