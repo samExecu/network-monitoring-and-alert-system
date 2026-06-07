@@ -41,15 +41,15 @@ Expect frequent updates, new features, and breaking changes until the first stab
 
 ### Ping Monitor
 
-![Ping Monitor Screenshot](docs/ping_monitor.png)
+![Ping Monitor Screenshot](docs/ping-monitor.png)
 
 ### HTTP Monitor
 
-![HTTP Monitor Screenshot](docs/http_monitor.png)
+![HTTP Monitor Screenshot](docs/http-monitor.png)
 
 ### Port Monitor
 
-![Port Monitor Screenshot](docs/port_monitor.png)
+![Port Monitor Screenshot](docs/port-monitor.png)
 
 # Team Members:
 
