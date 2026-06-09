@@ -37,6 +37,20 @@ Expect frequent updates, new features, and breaking changes until the first stab
 
 ---
 
+## Sample Output
+
+### Ping Monitor
+
+![Ping Monitor Screenshot](docs/ping-monitor.png)
+
+### HTTP Monitor
+
+![HTTP Monitor Screenshot](docs/http-monitor.png)
+
+### Port Monitor
+
+![Port Monitor Screenshot](docs/port-monitor.png)
+
 # Team Members:
 
 1. Bikram Timalsina
