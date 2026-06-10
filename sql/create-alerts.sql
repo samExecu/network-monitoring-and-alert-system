@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS alerts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    host TEXT NOT NULL,
+    label TEXT NOT NULL,
+    alert_type TEXT NOT NULL, -- DOWN, HIGH_LATENCY, PORT_OPENED, etc.
+    message TEXT NOT NULL,
+    severity TEXT NOT NULL, -- INFO | WARNING | CRITICAL
+    timestamp TEXT NOT NULL
+);
