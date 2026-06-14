@@ -1,43 +1,45 @@
 # NetMon - Network Monitoring & Alert System
 
-> **On‑Going Project** — Actively being developed, features may change.
-
-A real-time network health monitor with a live web dashboard, anomaly detection, and multi-channel alerts.
+A network health monitor that keeps tabs on your hosts and services. It watches for problems, alerts you when something goes wrong, and keeps a log of everything that happens.
 Built with Python. Works on Windows, macOS, and Linux.
+
+> **Note:** This project is still being worked on. It's not finished yet and isn't ready to use in production. Stuff might break or change without warning.
 
 ---
 
-## What it does
+## What's Done
 
-- **Monitors** any host or service — via ICMP ping, TCP port check, or HTTP/HTTPS
-- **Detects anomalies** — latency spikes, packet loss, host flapping, port changes, slow HTTP
-- **Alerts in real time** — Discord embed + HTML email when something breaks
-- **Displays a live dashboard** — auto-updating charts, uptime %, alert feed, attack events
-- **Flags attacks** — ICMP floods, Slowloris HTTP DoS, unexpected port openings
+- **Monitoring** — Pings hosts, checks if HTTP services are responding, and monitors specific ports
+- **Problem detection** — Spots when hosts go down, latency gets bad, there's packet loss, HTTP errors happen, or ports randomly open/close
+- **Alerts** — Sends notifications to Discord and email when things break
+- **Database storage** — Keeps all the metrics and alert history in SQLite so you can look back at what happened
+- **Scheduler** — Runs checks regularly on all your targets without blocking each other
 
 ---
 
 ## Tech Stack
 
-| Layer      | Technology                                                      |
-| ---------- | --------------------------------------------------------------- |
-| Monitor    | Python `subprocess` (cross-platform ping), `socket`, `requests` |
-| Scheduling | APScheduler                                                     |
-| Storage    | SQLite (`sqlite3` built-in)                                     |
-| Alerts     | Discord Webhooks, Gmail SMTP                                    |
-| Dashboard  | Flask + Flask-SocketIO + Chart.js                               |
-| Detection  | Custom anomaly engine                                           |
+| Part      | What we used                               |
+| --------- | ------------------------------------------ |
+| Monitor   | Python (ping), sockets, HTTP requests      |
+| Scheduler | APScheduler - runs tasks on a timer        |
+| Storage   | SQLite - simple database built into Python |
+| Alerts    | Discord Webhooks, Gmail SMTP               |
+| Detection | Custom code that spots problems            |
 
 ---
 
-## Project Status
+## What's Included
 
-This project is in **active development**.
-Expect frequent updates, new features, and breaking changes until the first stable release.
+- **Ping monitor** — Checks if hosts respond and how fast
+- **HTTP monitor** — Tests web services and measures response time
+- **Port monitor** — Watches specific ports for changes
+- **8 different detectors** — Looks for host downtime, latency spikes, packet loss, bad HTTP responses, slow responses, port changes, and weird behavior patterns
+- **Multi-channel alerts** — Gets you notifications on Discord and email
 
 ---
 
-## Sample Output
+## What It Looks Like
 
 ### Ping Monitor
 
@@ -51,7 +53,23 @@ Expect frequent updates, new features, and breaking changes until the first stab
 
 ![Port Monitor Screenshot](docs/port-monitor.png)
 
-# Team Members:
+---
+
+## Getting Started
+
+1. **Set up Python** — Make sure you have Python 3.9+ installed
+2. **Install dependencies** — Run `pip install -r requirements.txt`
+3. **Configure targets** — Edit `config.py` and add the hosts you want to monitor
+4. **Set up alerts** — Add your Discord webhook and email settings to a `.env` file
+5. **Run it** — Execute each file seperately to test the features out
+
+> **Note:** Don't run scheduler.py and anamoly.py seperately, it's still being configured
+
+All your metrics and alerts get saved to the database, and you can look back at what happened whenever you want.
+
+---
+
+## The Team
 
 1. Bikram Timalsina
 2. Karan Bhatt
