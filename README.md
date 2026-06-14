@@ -53,6 +53,14 @@ Built with Python. Works on Windows, macOS, and Linux.
 
 ![Port Monitor Screenshot](docs/port-monitor.png)
 
+### Discord Alerts
+
+![Discord Alert Screenshot](docs/discord-alert.png)
+
+### Email Alerts
+
+![Email Alert Screenshot](docs/email-alert.png)
+
 ---
 
 ## Getting Started
