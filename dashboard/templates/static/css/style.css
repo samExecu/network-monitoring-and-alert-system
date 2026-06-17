@@ -2,11 +2,11 @@
 @font-face {
   font-family: "Apfel Grotezk";
   src:
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff2")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff2")
       format("woff2"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff")
       format("woff"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.otf")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.otf")
       format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -14,11 +14,11 @@
 @font-face {
   font-family: "Apfel Grotezk";
   src:
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff2")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff2")
       format("woff2"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff")
       format("woff"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.otf")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.otf")
       format("opentype");
   font-weight: 500;
   font-style: normal;
@@ -26,11 +26,10 @@
 @font-face {
   font-family: "Apfel Grotezk";
   src:
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.woff2")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.woff2")
       format("woff2"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.woff")
-      format("woff"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.otf")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.woff") format("woff"),
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.otf")
       format("opentype");
   font-weight: 600;
   font-style: normal;
@@ -38,11 +37,11 @@
 @font-face {
   font-family: "Apfel Grotezk";
   src:
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.woff2")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.woff2")
       format("woff2"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.woff")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.woff")
       format("woff"),
-    url("../../fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.otf")
+    url("/fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.otf")
       format("opentype");
   font-weight: 700;
   font-style: normal;

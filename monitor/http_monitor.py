@@ -23,11 +23,15 @@ def check_http(url: str, timeout: int = 5) -> tuple[int | None, float | None]:
     """
     try:
         start = time.perf_counter()
+
+        browser_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
         response = requests.get(
             url,
             timeout=timeout,
             allow_redirects=True,
-            headers={"User-Agent": "NetworkMonitor/1.0"},
+            headers=browser_headers,
             verify=True,  # SSL cert validation
         )
         elapsed_ms = (time.perf_counter() - start) * 1000

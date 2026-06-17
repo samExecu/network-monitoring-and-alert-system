@@ -82,7 +82,7 @@ def log_attack_event(host, attack_type, description, severity):
 def get_host_stats():
     # Getting the 24h uptime % and average RTT per host.
     with db_conn() as conn:
-        rows = conn.execute(_load_sql("get-host-stats.sql")).fetchall()
+        rows = conn.execute(_load_sql("get-host-status.sql")).fetchall()
     return [dict(r) for r in rows]
 
 

@@ -84,9 +84,18 @@ function renderIndustrialHostMatrix(stats, currentStates) {
   matrixBox.innerHTML = "";
 
   stats.forEach((target) => {
-    const evaluatesUp = currentStates[target.host] === "up";
-    const targetBlock = document.createElement("div");
+    // Find the matching host inside the data array returned by your API
+    let evaluatesUp = false;
 
+    if (Array.isArray(currentStates)) {
+      const match = currentStates.find((item) => item.host === target.host);
+      // It is up if the backend object exists and its 'is_up' flag equals 1
+      if (match && match.is_up === 1) {
+        evaluatesUp = true;
+      }
+    }
+
+    const targetBlock = document.createElement("div");
     targetBlock.className = `host-block ${evaluatesUp ? "up-state" : "down-state"}`;
     targetBlock.innerHTML = `
             <div class="host-meta-row">
