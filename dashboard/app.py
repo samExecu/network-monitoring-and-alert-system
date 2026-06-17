@@ -14,6 +14,7 @@ SocketIO events:
 - Server → Client "update" - emitted every 10s, tells client to refresh
 """
 
+import os
 import threading
 import time
 import logging
@@ -24,8 +25,15 @@ from database import database
 
 logger = logging.getLogger("dashboard")
 
-# Flask App Setup
-app = Flask(__name__, template_folder="templates")
+# Find the absolute path to the project root directory (one level up from dashboard/)
+BASE_DIR = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+
+# Configure Flask to look at the root directory for templates and static files
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static")
+)
 app.config["SECRET_KEY"] = "netmon-dashboard-secret"
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
