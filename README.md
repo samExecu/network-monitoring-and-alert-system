@@ -39,6 +39,21 @@ Built with Python. Works on Windows, macOS, and Linux.
 
 ---
 
+## Dashboard Interface
+
+The **NetMon Dashboard** provides a real-time monitoring interface. It visualizes your network health, tracks latency history, and logs security events in an easy-to-read, clean layout.
+
+![NetMon Dashboard Screenshot](docs/dashboard.png)
+
+#### Dashboard Highlights:
+
+- **Live Host Matrix:** Instant visual feedback on system state with `SYS_OK` and `SYS_FAIL` indicators.
+- **Time-Series Telemetry:** Interactive line charts for monitoring RTT latency trends over time.
+- **Security Breach Logs:** Centralized tracking of network anomalies, port scans, and flapping services.
+- **Real-time Updates:** Powered by **Flask-SocketIO**, the dashboard updates automatically without requiring a page refresh.
+
+---
+
 ## What It Looks Like
 
 ### Ping Monitor
