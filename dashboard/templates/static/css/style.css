@@ -1,0 +1,389 @@
+/* FONT IMPORTS - INTEGRATED VIA REUSE REQUEST */
+@font-face {
+  font-family: "Apfel Grotezk";
+  src:
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff2")
+      format("woff2"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.woff")
+      format("woff"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Regular.otf")
+      format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Apfel Grotezk";
+  src:
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff2")
+      format("woff2"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.woff")
+      format("woff"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Mittel.otf")
+      format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Apfel Grotezk";
+  src:
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.woff2")
+      format("woff2"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.woff") format("woff"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Satt.otf")
+      format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Apfel Grotezk";
+  src:
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.woff2")
+      format("woff2"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.woff") format("woff"),
+    url("fonts/apfel-grotezk-main/fonts/ApfelGrotezk-Brukt.otf")
+      format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* PRODUCTION CORE SETTINGS */
+:root {
+  --raw-black: #080a0f;
+  --zinc-crust: #121620;
+  --zinc-core: #1a202c;
+  --zinc-sheen: #2d3748;
+  --industrial-border: #3f4e66;
+
+  --text-stark: #ffffff;
+  --text-muted: #8a9bb4;
+
+  --industrial-green: #00ff66;
+  --industrial-orange: #ff9900;
+  --industrial-red: #ff3333;
+
+  --grid-gap: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Apfel Grotezk", monospace;
+  background-color: var(--raw-black);
+  color: var(--text-stark);
+  overflow-x: hidden;
+  padding: var(--grid-gap);
+  height: 100vh;
+}
+
+/* Master Grid Outer Shell Container */
+.netmon-frame {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - (var(--grid-gap) * 2));
+  gap: var(--grid-gap);
+}
+
+/* System Header Element */
+.netmon-header {
+  background: var(--zinc-crust);
+  border: 2px solid var(--industrial-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  position: relative;
+}
+
+.brand-title {
+  font-family: "Apfel Grotezk";
+  font-weight: 700; /* Uses Brukt variant */
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.brand-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.system-heartbeat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--raw-black);
+  padding: 8px 16px;
+  border: 1px solid var(--industrial-border);
+}
+
+.pulse-indicator {
+  width: 10px;
+  height: 10px;
+  background-color: var(--industrial-green);
+  box-shadow: 0 0 10px var(--industrial-green);
+  border-radius: 50%;
+  transition: transform 0.1s ease;
+}
+
+.pulse-indicator.tick {
+  transform: scale(1.3);
+  background-color: var(--industrial-orange);
+}
+
+.ticker-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.ticker-val {
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Main UI Structural Workspace Grid Splits */
+.netmon-workspace {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--grid-gap);
+  flex: 1;
+  min-height: 0; /* Box model fix for internal scrolls */
+}
+
+.workspace-left,
+.workspace-right {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.workspace-right {
+  gap: var(--grid-gap);
+}
+
+/* Structural Header-Bars inside Modules */
+.section-title-bar {
+  background: var(--zinc-core);
+  border: 2px solid var(--industrial-border);
+  border-bottom: none;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-stamped {
+  font-weight: 700; /* Maps Brukt Structural Design */
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.alert-accent {
+  border-left: 6px solid var(--industrial-orange);
+}
+.threat-accent {
+  border-left: 6px solid var(--industrial-red);
+}
+
+/* Left Host Layout Matrix Blocks */
+.host-matrix {
+  background: var(--zinc-crust);
+  border: 2px solid var(--industrial-border);
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Host Row Brutalist Design Container block */
+.host-block {
+  background: var(--zinc-core);
+  border: 1px solid var(--industrial-border);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.host-block:hover {
+  border-color: var(--text-stark);
+  transform: translateX(4px);
+}
+
+.host-block.down-state {
+  border-left: 4px solid var(--industrial-red);
+}
+
+.host-block.up-state {
+  border-left: 4px solid var(--industrial-green);
+}
+
+.host-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.host-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.host-ip {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.host-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+}
+
+.host-stats-line {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--raw-black);
+  border: 1px solid rgba(63, 78, 102, 0.4);
+  padding: 8px;
+}
+
+.stat-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-lbl {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.stat-val {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+/* Right Content Structure Blocks */
+.telemetry-block {
+  background: var(--zinc-crust);
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+}
+
+.chart-canvas-wrapper {
+  background: var(--zinc-core);
+  border: 2px solid var(--industrial-border);
+  padding: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Custom Minimal Dropdown Styling */
+.chart-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-wrapper select {
+  background: var(--raw-black);
+  color: var(--text-stark);
+  border: 1px solid var(--industrial-border);
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Incidents Section Layout Split */
+.incident-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--grid-gap);
+  flex: 1;
+  min-height: 0;
+}
+
+.incident-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.log-table-wrapper {
+  background: var(--zinc-crust);
+  border: 2px solid var(--industrial-border);
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Stripped Heavy Border Grid System Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--industrial-border);
+}
+
+th {
+  background: var(--zinc-core);
+  color: var(--text-muted);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 2px solid var(--industrial-border);
+}
+
+tbody tr {
+  animation: appendRow 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Row Appending Anharmonic Keyframes */
+@keyframes appendRow {
+  from {
+    background: rgba(255, 51, 51, 0.15);
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    background: transparent;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Scrollbar Infrastructure Override */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--raw-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--industrial-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

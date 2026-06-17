@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetMon</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="static/js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="netmon-frame">
+      <header class="netmon-header">
+        <div class="brand-block">
+          <div class="brand-title">NETMON // SYS_MONITOR</div>
+          <div class="brand-sub">CORE PROBING & SECURITY ENGINE ACTIVE</div>
+        </div>
+        <div class="system-heartbeat">
+          <div class="pulse-indicator" id="network-pulse"></div>
+          <div class="ticker-wrap">
+            <span class="ticker-label">SYS_TICK:</span>
+            <span id="timestamp-ticker" class="ticker-val">CONNECTING...</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="netmon-workspace">
+        <section class="workspace-left">
+          <div class="section-title-bar">
+            <span class="title-stamped">01 / LIVE_INFRASTRUCTURE_STATES</span>
+          </div>
+          <div class="host-matrix" id="host-matrix-container"></div>
+        </section>
+
+        <section class="workspace-right">
+          <div class="telemetry-block">
+            <div class="section-title-bar chart-nav">
+              <span class="title-stamped">02 / HISTORIC_LATENCY_SERIES</span>
+              <div class="select-wrapper">
+                <select
+                  id="host-telemetry-selector"
+                  aria-label="Select Target Host"
+                ></select>
+              </div>
+            </div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="netmonTelemetryChart"></canvas>
+            </div>
+          </div>
+
+          <div class="incident-split-grid">
+            <div class="incident-panel operational-panel">
+              <div class="section-title-bar alert-accent">
+                <span class="title-stamped">03 / ACTIVE_SYSTEM_ALERTS</span>
+              </div>
+              <div class="log-table-wrapper">
+                <table id="table-alerts">
+                  <thead>
+                    <tr>
+                      <th style="width: 20%">TIME</th>
+                      <th style="width: 30%">TARGET_IP</th>
+                      <th style="width: 50%">INCIDENT_LOG</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="incident-panel security-panel">
+              <div class="section-title-bar threat-accent">
+                <span class="title-stamped">04 / SECURITY_BREACH_LOGS</span>
+              </div>
+              <div class="log-table-wrapper">
+                <table id="table-attacks">
+                  <thead>
+                    <tr>
+                      <th style="width: 20%">TIME</th>
+                      <th style="width: 25%">TARGET</th>
+                      <th style="width: 30%">VECTOR</th>
+                      <th style="width: 25%">SRC_IP</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
