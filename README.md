@@ -77,6 +77,18 @@ All your metrics and alerts get saved to the database, and you can look back at 
 
 ---
 
+## Typography
+
+This project uses **Apfel Grotezk**, a high-quality open-source typeface designed by Collletttivo.
+
+**Font License:** Apfel Grotezk is licensed under the [SIL Open Font License (OFL) v1.1](https://scripts.sil.org/OFL)
+
+- **Author:** Collletttivo (https://www.collletttivo.it/)
+- **License:** SIL Open Font License v1.1
+- **Font Files Location:** `dashboard/templates/fonts/apfel-grotezk-main/`
+
+---
+
 ## The Team
 
 1. Bikram Timalsina
