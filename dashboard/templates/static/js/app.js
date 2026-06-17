@@ -60,17 +60,23 @@ async function updateHistoricFeeds() {
     const alertsPayload = await alertsResponse.json();
     const attacksPayload = await attacksResponse.json();
 
+    // Map your alerts as needed...
     populateRawDataTable("table-alerts", alertsPayload, [
       "timestamp",
       "host",
       "message",
     ]);
+
+    // ── UPDATE THIS SECTION ──
+    // Match the keys exactly as they appear in your console object:
+    // { attack_type: "...", description: "...", host: "..." }
     populateRawDataTable("table-attacks", attacksPayload, [
       "timestamp",
-      "target",
-      "type",
-      "source",
+      "host", // Maps to the target column
+      "attack_type", // Maps to the vector column
+      "description", // Maps to the src_ip column (or add this field if you want to show it)
     ]);
+    // ──────────────────────────
   } catch (err) {
     console.error("Critical error parsing historic logging pipelines:", err);
   }
@@ -208,17 +214,31 @@ function renderTelemetryTimeline(seriesMetrics, activeIP) {
     .getElementById("netmonTelemetryChart")
     .getContext("2d");
 
-  // Sort array elements chronologically
-  const processLabels = seriesMetrics.map((item) =>
-    new Date(item.timestamp * 1000).toLocaleTimeString(),
-  );
-  const processedMetrics = seriesMetrics.map((item) => item.rtt);
+  if (!seriesMetrics || seriesMetrics.length === 0) return;
+
+  // 1. Map data using the correct property names ('timestamp' and 'rtt_ms')
+  const validMetrics = seriesMetrics.map((item) => ({
+    timeStr: item.timestamp,
+    rtt: item.rtt_ms || 0,
+  }));
+
+  // 2. Parse ISO strings correctly
+  const processLabels = validMetrics.map((item) => {
+    const date = new Date(item.timeStr); // Directly parse the ISO string
+    return date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+  });
+
+  const processedMetrics = validMetrics.map((item) => item.rtt);
 
   if (telemetryChartInstance) {
     telemetryChartInstance.data.labels = processLabels;
     telemetryChartInstance.data.datasets[0].data = processedMetrics;
     telemetryChartInstance.data.datasets[0].label = `MONITOR REFRESH PATHWAY // ${activeIP} (RTT_ms)`;
-    telemetryChartInstance.update("none");
+    telemetryChartInstance.update();
   } else {
     telemetryChartInstance = new Chart(telemetryContext, {
       type: "line",
