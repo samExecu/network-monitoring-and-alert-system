@@ -67,16 +67,12 @@ async function updateHistoricFeeds() {
       "message",
     ]);
 
-    // ── UPDATE THIS SECTION ──
-    // Match the keys exactly as they appear in your console object:
-    // { attack_type: "...", description: "...", host: "..." }
     populateRawDataTable("table-attacks", attacksPayload, [
       "timestamp",
       "host", // Maps to the target column
       "attack_type", // Maps to the vector column
       "description", // Maps to the src_ip column (or add this field if you want to show it)
     ]);
-    // ──────────────────────────
   } catch (err) {
     console.error("Critical error parsing historic logging pipelines:", err);
   }
