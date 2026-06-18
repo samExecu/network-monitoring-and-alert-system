@@ -84,9 +84,7 @@ The **NetMon Dashboard** provides a real-time monitoring interface. It visualize
 2. **Install dependencies** - Run `pip install -r requirements.txt`
 3. **Configure targets** - Edit `config.py` and add the hosts you want to monitor
 4. **Set up alerts** - Add your Discord webhook and email settings to a `.env` file
-5. **Run it** - Execute each file seperately to test the features out
-
-> **Note:** Don't run scheduler.py and anamoly.py seperately, it's still being configured
+5. **Run it** - Execute `netmon.py` to start the program
 
 All your metrics and alerts get saved to the database, and you can look back at what happened whenever you want.
 
