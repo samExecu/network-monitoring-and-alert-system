@@ -39,6 +39,65 @@ Built with Python. Works on Windows, macOS, and Linux.
 
 ---
 
+## Project Structure
+
+A breakdown of the repository layout, mapping out the core application layers from data collection to the presentation dashboard.
+
+netmon/
+│
+├── main.py                 # ENTRY POINT — run this to start everything
+├── config.py               # all settings: hosts, thresholds, secrets
+├── scheduler.py            # polling engine: pings targets every 30s
+├── requirements.txt        # pip package list
+├── .env                    # your secrets (never commit this)
+├── .env.example            # template for .env
+├── .gitignore              # tells Git to ignore .env, logs/, data/
+│
+├── monitor/                # data collection layer
+│   ├── _init_.py
+│   ├── ping_monitor.py     # ICMP ping (cross-platform)
+│   ├── port_monitor.py     # TCP port checker
+│   └── http_monitor.py     # HTTP/HTTPS response checker
+│
+├── database/               # persistence layer
+│   ├── _init_.py
+│   └── database.py               # SQLite: create, read, write
+│
+├── alerts/                 # notification layer
+│   ├── _init_.py
+│   ├── discord_alert.py    # Discord webhook embeds
+│   └── email_alert.py      # Gmail SMTP HTML email
+│
+├── detection/              # analysis layer
+│   ├── _init_.py
+│   └── anomaly.py          # rolling-average anomaly engine
+│
+├── dashboard/              # presentation layer
+│   ├── _init_.py
+│   ├── app.py              # Flask + SocketIO server
+│   └── templates/
+│       └── index.html      # live dashboard UI
+│
+├── sql/                    # Sql command for the dashboard
+│   ├── create-alerts.sql
+│   ├── create-attack-events.sql
+│   ├── create-metrics.sql
+│   ├── get-attack-events.sql
+│   ├── get-current-status.sql
+│   ├── get-host-status.sql
+│   ├── get-recent-alerts.sql
+│   ├── get-rtt-history.sql
+│   ├── insert-alert.sql
+│   ├── insert-attack-events.sql
+│   ├── insert-metric.sql
+│
+├── logs/
+│   └── monitor.log         # all events logged here
+└── data/
+    └── monitor.db          # SQLite database file
+
+---
+
 ## Dashboard Interface
 
 The **NetMon Dashboard** provides a real-time monitoring interface. It visualizes your network health, tracks latency history, and logs security events in an easy-to-read, clean layout.
