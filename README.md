@@ -42,7 +42,7 @@ Built with Python. Works on Windows, macOS, and Linux.
 ## Project Structure
 
 A breakdown of the repository layout, mapping out the core application layers from data collection to the presentation dashboard.
-
+```
 netmon/
 │
 ├── main.py                 # ENTRY POINT — run this to start everything
@@ -95,7 +95,7 @@ netmon/
 │   └── monitor.log         # all events logged here
 └── data/
     └── monitor.db          # SQLite database file
-
+```
 ---
 
 ## Dashboard Interface
