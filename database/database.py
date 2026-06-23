@@ -44,6 +44,7 @@ def init_db():
         c.execute(_load_sql("create-metrics.sql"))
         c.execute(_load_sql("create-alerts.sql"))
         c.execute(_load_sql("create-attack-events.sql"))
+        c.execute(_load_sql("create-port-states.sql"))
         conn.commit()
     print("Database Initialized.")
 
@@ -77,6 +78,15 @@ def log_attack_event(host, attack_type, description, severity):
         ))
         conn.commit()
 
+def log_port_state(host, label, port, service, is_open):
+    # Record the state of a single port at poll time.
+    with db_conn() as conn:
+        conn.execute(_load_sql("insert-port-state.sql"), (
+            host, label, port, service,
+            1 if is_open else 0,
+            datetime.now().isoformat()
+        ))
+        conn.commit()
 
 # Reading from the database
 def get_host_stats():

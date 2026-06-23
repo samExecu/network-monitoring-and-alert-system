@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS port_states (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    host TEXT NOT NULL,
+    label TEXT NOT NULL,
+    port INTEGER NOT NULL,
+    service TEXT NOT NULL,
+    is_open INTEGER NOT NULL,
+    timestamp TEXT NOT NULL
+);

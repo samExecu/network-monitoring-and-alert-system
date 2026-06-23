@@ -40,9 +40,9 @@ def check_http(url: str, timeout: int = 5) -> tuple[int | None, float | None]:
     except requests.exceptions.SSLError:
         return 495, None  # SSL handshake failed
     except requests.exceptions.Timeout:
-        return 408, None  # request timed out
+        return 408, 5000  # request timed out
     except requests.exceptions.ConnectionError:
-        return None, None  # couldn't connect at all
+        return 503, None  # couldn't connect at all
     except Exception as e:
         print(f"[HTTP ERROR] {url}: {e}")
         return None, None

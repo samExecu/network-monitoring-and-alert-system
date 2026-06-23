@@ -44,6 +44,20 @@ def _poll_one(target: dict) -> None:
     if http_code is not None:
         detector.check_http(host, label, http_code, http_ms)
 
+    #Note: only use port scan on networks you are allowed
+    # port_results = port_monitor.scan_common_ports(host)
+    # detector.check_port_changes(host, label, port_results)
+
+    # # Log each port state to DB so dashboard can show them
+    # for port, info in port_results.items():
+    #     database.log_port_state(
+    #         host=host,
+    #         label=label,
+    #         port=port,
+    #         service=info["service"],
+    #         is_open=info["open"]
+    #     )
+
     # Console log
     if is_up:
         rtt_str = f"{rtt_ms:.0f}ms" if rtt_ms else "—"
@@ -63,4 +77,5 @@ def poll_all() -> None:
     for t in threads:
         t.start()
     for t in threads:
-        t.join(timeout=20)  # max 20s per poll cycle
+        t.join(timeout=15)  # max 20s per poll cycle
+
