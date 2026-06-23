@@ -3,7 +3,7 @@
 A network health monitor that keeps tabs on your hosts and services. It watches for problems, alerts you when something goes wrong, and keeps a log of everything that happens.
 Built with Python. Works on Windows, macOS, and Linux.
 
-> **Note:** This project is still being worked on. It's not finished yet and isn't ready to use in production. Stuff might break or change without warning.
+> **Warning:** Do not use it in a production deployment. Use a production WSGI server instead.
 
 ---
 
